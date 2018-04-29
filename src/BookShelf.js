@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import BookList from './BookList';
+import PropTypes from 'prop-types';
 
 class BookShelf extends Component {
 	constructor(props){
 		super(props)
 		this.onShelfUpdate = this.onShelfUpdate.bind(this)
+	}
+	static propTypes = {
+		books: PropTypes.array.isRequired,
+		onShelfUpdate: PropTypes.func.isRequired
 	}
 	onShelfUpdate(book, newShelf){
 		console.log(this.state)
