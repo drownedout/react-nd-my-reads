@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import BookItem from './BookItem';
 
 class BookList extends Component {
-	updateShelf = (book, value) => {
-		book = value
-		this.setState(()=> ({
-
-		})
-	)}
+	constructor(props){
+		super(props)
+		this.onShelfUpdate = this.onShelfUpdate.bind(this)
+	}
+	onShelfUpdate(book, newShelf){
+		this.props.onShelfUpdate(book, newShelf);
+	}
 	render() {
 		const { books } = this.props;
-		console.log(this.props);
 		let bookItems;
 		if (!books) {
 			bookItems = (
@@ -18,7 +18,11 @@ class BookList extends Component {
 			)
 		} else {
 			bookItems = books.map((book) => (
-	          	<BookItem book={book} key={book.id}/>
+	          	<BookItem 
+	          		book={book}
+	          		key={book.id}
+	          		onUpdateShelf={this.onShelfUpdate}
+	          	/>
 	        ));
 		}
 		return (
