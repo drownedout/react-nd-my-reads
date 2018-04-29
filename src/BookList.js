@@ -31,13 +31,17 @@ class BookList extends Component {
 	        ));
 		}
 		return (
-            <ol className="books-grid">
-              {bookItems}
-            </ol>
+			<div className="bookshelf">
+              <h2 className="bookshelf-title">{this.props.name}</h2>
+              <div className="bookshelf-books">
+	            <ol className="books-grid">
+	              {bookItems}
+	            </ol>
+	          </div>
+            </div>
 		)
 	}
 
 }
-
 
 export default BookList;

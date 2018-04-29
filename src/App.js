@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import BookShelf from './BookShelf';
-import './App.css'
+import Search from './Search.js';
+import './App.css';
 
 class BooksApp extends React.Component {
   state = {
@@ -32,67 +34,13 @@ class BooksApp extends React.Component {
   render() {
     // All books
     const { books } = this.state;
-    // Currently reading
-    const current = books.filter((book) => (
-      book.shelf === 'currentlyReading'
-    ));
-    // Want to read
-    const want = books.filter((book) => (
-      book.shelf === 'wantToRead'
-    ));
-    // Have read
-    const read = books.filter((book) => (
-      book.shelf === 'read'
-    ));
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <div className="search-books">
-            <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
-              <div className="search-books-input-wrapper">
-                {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-                <input type="text" placeholder="Search by title or author"/>
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
-          </div>
-        ) : (
-          <div className="list-books">
-              <div className="list-books-title">
-                <h1>MyReads</h1>
-              </div>
-              <div className="list-books-content">
-                <BookShelf
-                  name = 'Currently Reading'
-                  books={current}
-                  onShelfUpdate = {this.onShelfUpdate}
-                />
-                <BookShelf
-                  name = 'Want to Read'
-                  books={want}
-                  onShelfUpdate = {this.onShelfUpdate}
-                />
-                <BookShelf
-                  name = 'Read'
-                  books={read}
-                  onShelfUpdate = {this.onShelfUpdate}
-                />
-              </div>
-                <div className="open-search">
-                <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-              </div>
-           </div>
-        )}
+          <BookShelf
+            books = {books}
+            onShelfUpdate = {this.onShelfUpdate}
+          />
+          <Search />
       </div>
     )
   }
