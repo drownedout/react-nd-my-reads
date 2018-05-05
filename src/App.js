@@ -27,8 +27,47 @@ class BooksApp extends React.Component {
   }
 
   onShelfUpdate = (book, newShelf) => {
+    // Need to push book to booklist
     book.shelf = newShelf;
+
+    let exists = false;
+
+    const books = this.state.books.map(changedBook => {
+      if(changedBook.id === book.id){
+        exists = true;
+        return book;
+      }
+      return changedBook;
+    });
+
+    if(!exists){
+      this.state.books.push(book);
+    }
+
     this.setState(this.state.books);
+
+    BooksAPI.update(book, newShelf)
+      .then(() => {
+        const books = this.state.books.map(previousBook => {
+          if (previousBook.id === book.id){
+            previousBook.isDisabled = false;
+          }
+          return previousBook;
+        })
+        this.setState({ books })
+      })
+  }
+
+  searchBooks = (query) => {
+    if (query===''){
+      this.setState({books:[]})
+    }
+    BooksAPI.search(query.trim(), 3).then(books => {
+      if(books===undefined) {
+        this.setState({books:[]})
+      }
+      this.setState({books})
+    })
   }
 
   render() {
@@ -47,7 +86,11 @@ class BooksApp extends React.Component {
           <Route 
             exact path="/search"
             render={() => 
-              <Search /> }
+              <Search 
+                books = {books}
+                searchBooks = {this.searchBooks}
+                onShelfUpdate = {this.onShelfUpdate}
+              /> }
           />
       </div>
     )
