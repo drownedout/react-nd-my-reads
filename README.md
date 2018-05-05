@@ -7,8 +7,12 @@
 
 To get started developing right away:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+```
+git clone https://github.com/drownedout/react-nd-my-reads.git
+npm install
+npm start
+```
+The app will open in a new browser tab using localhost:3000
 
 ## What You're Getting
 ```bash
