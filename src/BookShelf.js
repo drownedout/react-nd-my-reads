@@ -16,6 +16,7 @@ class BookShelf extends Component {
 		this.props.onShelfUpdate(book, newShelf)
 	}
 	render(){
+		// All books
 		const {books} = this.props;
 		// Currently reading;
 	    const current = books.filter((book) => (
