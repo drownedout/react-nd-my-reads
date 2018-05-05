@@ -12,7 +12,7 @@ class Search extends Component {
   }
 
   state = {
-    searchedBooks: []
+    books: []
   }
 
   static propTypes = {
@@ -21,13 +21,13 @@ class Search extends Component {
 
   searchBooks = (query) => {
     if (query===''){
-      this.setState({searchedBooks:[]});
+      this.setState({books:[]});
     }
     BooksAPI.search(query.trim(), 3).then(books => {
       if(books===undefined) {
-        this.setState({searchedBooks:[]});
+        this.setState({books:[]});
       }
-      this.setState({searchedBooks: books});
+      this.setState({books: books});
     });
   }
 
@@ -36,8 +36,7 @@ class Search extends Component {
   }
 
   render(){
-    const { searchedBooks } = this.state;
-    const { books } = this.props;
+    const { books } = this.state;
     return(
       <div className="search-books">
         <div className="search-books-bar">
@@ -53,7 +52,7 @@ class Search extends Component {
           <ol className="books-grid">
             <BookList 
               name='Search Results'
-              books={searchedBooks} 
+              books={books} 
               onShelfUpdate={this.onShelfUpdate}
               />
           </ol>

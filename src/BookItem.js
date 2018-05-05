@@ -19,13 +19,14 @@ class BookItem extends Component {
 			: '';
 
 		const thumbnailImage = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : '';
+		const shelf = book.shelf ? book.shelf : 'none';
 		return (
 			<li>
 	            <div className="book">
 	              <div className="book-top">
 	                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnailImage})`}}></div>
 	                <div className="book-shelf-changer">
-	                  <select onChange={(event) => this.updateShelf(event.target.value)} defaultValue="none">
+	                  <select onChange={(event) => this.updateShelf(event.target.value)} defaultValue={shelf}>
 	                    <option value="none" disabled>Move to...</option>
 	                    <option value="currentlyReading">Currently Reading</option>
 	                    <option value="wantToRead">Want to Read</option>
