@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import BookList from './BookList';
 import * as BooksAPI from './BooksAPI';
 
 class Search extends Component {
-
   constructor(props){
     super(props);
     this.searchBooks = this.searchBooks.bind(this);
@@ -13,6 +13,10 @@ class Search extends Component {
 
   state = {
     searchedBooks: []
+  }
+
+  static propTypes = {
+    onShelfUpdate: PropTypes.func.isRequired
   }
 
   searchBooks = (query) => {
@@ -50,7 +54,7 @@ class Search extends Component {
             <BookList 
               name='Search Results'
               books={searchedBooks} 
-              onShelfUpdate = {this.onShelfUpdate}
+              onShelfUpdate={this.onShelfUpdate}
               />
           </ol>
         </div>
