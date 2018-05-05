@@ -1,7 +1,7 @@
 # MyReads
 
-!(screenshots/index.png "Index")
-!(screenshots/search.png "Search")
+![Index](screenshots/index.png "Index")
+![Search](screenshots/search.png "Search")
 
 ## Getting Started
 
