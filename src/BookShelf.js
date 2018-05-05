@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import BookList from './BookList';
 import PropTypes from 'prop-types';
 
@@ -12,12 +13,11 @@ class BookShelf extends Component {
 		onShelfUpdate: PropTypes.func.isRequired
 	}
 	onShelfUpdate(book, newShelf){
-		console.log(this.state)
 		this.props.onShelfUpdate(book, newShelf)
 	}
 	render(){
-		const {books, name} = this.props;
-		// Currently reading
+		const {books} = this.props;
+		// Currently reading;
 	    const current = books.filter((book) => (
 	      book.shelf === 'currentlyReading'
 	    ));
@@ -56,7 +56,7 @@ class BookShelf extends Component {
            	</div>
            	</div>
            	<div className="open-search">
-                <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+                <Link to="/search">Add a book</Link>
             </div>
            	</div>
 		)
