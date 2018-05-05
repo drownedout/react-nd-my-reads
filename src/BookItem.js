@@ -11,7 +11,6 @@ class BookItem extends Component {
 	}
 	render() {
 		const { book } = this.props;
-		console.log(book)
 		const authors = book.authors ? book.authors.map((author) => 
 				<div className="book-authors" key={author}>
 					{author}
