@@ -35,7 +35,7 @@ class BooksApp extends React.Component {
             return book;
           }
           return previousBook;
-        })
+        });
         // If it doesn't exist push to state
         if(!exists){
           this.state.books.push(book);
@@ -45,7 +45,7 @@ class BooksApp extends React.Component {
       })
       .catch(error => {
         console.log(error);
-      })
+      });
   }
 
   render() {

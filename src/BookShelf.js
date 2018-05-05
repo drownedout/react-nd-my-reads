@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 class BookShelf extends Component {
 	constructor(props){
-		super(props)
-		this.onShelfUpdate = this.onShelfUpdate.bind(this)
+		super(props);
+		this.onShelfUpdate = this.onShelfUpdate.bind(this);
 	}
 
 	static propTypes = {
@@ -15,7 +15,7 @@ class BookShelf extends Component {
 	}
 
 	onShelfUpdate(book, newShelf){
-		this.props.onShelfUpdate(book, newShelf)
+		this.props.onShelfUpdate(book, newShelf);
 	}
 	
 	render(){

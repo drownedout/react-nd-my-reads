@@ -6,9 +6,9 @@ import * as BooksAPI from './BooksAPI';
 class Search extends Component {
 
   constructor(props){
-    super(props)
-    this.searchBooks = this.searchBooks.bind(this)
-    this.onShelfUpdate = this.onShelfUpdate.bind(this)
+    super(props);
+    this.searchBooks = this.searchBooks.bind(this);
+    this.onShelfUpdate = this.onShelfUpdate.bind(this);
   }
 
   state = {
@@ -17,18 +17,18 @@ class Search extends Component {
 
   searchBooks = (query) => {
     if (query===''){
-      this.setState({searchedBooks:[]})
+      this.setState({searchedBooks:[]});
     }
     BooksAPI.search(query.trim(), 3).then(books => {
       if(books===undefined) {
-        this.setState({searchedBooks:[]})
+        this.setState({searchedBooks:[]});
       }
-      this.setState({searchedBooks: books})
-    })
+      this.setState({searchedBooks: books});
+    });
   }
 
   onShelfUpdate(book, newShelf){
-    this.props.onShelfUpdate(book, newShelf)
+    this.props.onShelfUpdate(book, newShelf);
   }
 
   render(){
