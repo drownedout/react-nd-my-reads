@@ -17,7 +17,7 @@ class BookList extends Component {
 	render() {
 		const { books } = this.props;
 		let bookItems;
-		if (!books) {
+		if (!books || books.error) {
 			bookItems = (
 				<p>Nothing Here...</p>
 			)
