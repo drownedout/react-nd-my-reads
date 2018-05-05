@@ -31,7 +31,6 @@ class BooksApp extends React.Component {
         // Checking if the updated book already exists in state
         const books = this.state.books.map(previousBook => {
           if (previousBook.id === book.id){
-            previousBook.isDisabled = false;
             exists = true;
             return book;
           }

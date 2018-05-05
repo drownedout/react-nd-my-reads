@@ -11,6 +11,14 @@ class BookItem extends Component {
 	}
 	render() {
 		const { book } = this.props;
+		console.log(book)
+		const authors = book.authors ? book.authors.map((author) => 
+				<div className="book-authors" key={author}>
+					{author}
+				</div>
+				)
+			: '';
+
 		const thumbnailImage = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : '';
 		return (
 			<li>
@@ -28,7 +36,7 @@ class BookItem extends Component {
 	                </div>
 	              </div>
 	              <div className="book-title">{book.title}</div>
-	              <div className="book-authors">{book.authors}</div>
+	              {authors}
 	            </div>
 	        </li>
 		)
