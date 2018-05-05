@@ -6,19 +6,20 @@ class BookItem extends Component {
 	    this.props.onUpdateShelf(this.props.book, event);
 	}
 	static propTypes = {
-		books: PropTypes.array.isRequired,
-		updateShelf: PropTypes.func.isRequired
+		book: PropTypes.object.isRequired,
+		onUpdateShelf: PropTypes.func.isRequired
 	}
 	render() {
 		const { book } = this.props;
+		const thumbnailImage = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : '';
 		return (
 			<li>
 	            <div className="book">
 	              <div className="book-top">
-	                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
+	                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnailImage})`}}></div>
 	                <div className="book-shelf-changer">
-	                  <select onChange={(event) => this.updateShelf(event.target.value)}>
-	                    <option value="none" disabled selected>Move to...</option>
+	                  <select onChange={(event) => this.updateShelf(event.target.value)} defaultValue="none">
+	                    <option value="none" disabled>Move to...</option>
 	                    <option value="currentlyReading">Currently Reading</option>
 	                    <option value="wantToRead">Want to Read</option>
 	                    <option value="read">Read</option>
