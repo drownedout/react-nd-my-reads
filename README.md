@@ -1,5 +1,8 @@
 # MyReads
 
+!(screenshots/index.png "Index")
+!(screenshots/search.png "Search")
+
 ## Getting Started
 
 To get started developing right away:
