@@ -27,8 +27,19 @@ class Search extends Component {
       if(books===undefined) {
         this.setState({books:[]});
       }
-      this.setState({books: books});
+      this.updateShelfOnSearch(books);
     });
+  }
+
+  updateShelfOnSearch(books){
+    for (let book of books){
+      for (let savedBook of this.props.books){
+        if(book.id === savedBook.id){
+          book.shelf = savedBook.shelf
+        }
+      }
+    }
+    this.setState({books})
   }
 
   onShelfUpdate(book, newShelf){
