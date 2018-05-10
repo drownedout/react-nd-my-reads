@@ -32,7 +32,7 @@ class Search extends Component {
   }
 
   updateShelfOnSearch(books){
-    for (let book of books){
+    for (let book of Object.entries(books)){
       for (let savedBook of this.props.books){
         if(book.id === savedBook.id){
           book.shelf = savedBook.shelf
