@@ -17,7 +17,6 @@ class BooksApp extends React.Component {
         this.setState({
           books
         })
-        console.log(books)
       })
   }
 
@@ -39,9 +38,10 @@ class BooksApp extends React.Component {
         });
         // If it doesn't exist push to state
         if(!exists){
-          this.state.books.push(book);
+          this.setState(state => ({
+            books: [...state.books, book]
+          }))
         }
-
         this.setState(this.state.books);
       })
       .catch(error => {
